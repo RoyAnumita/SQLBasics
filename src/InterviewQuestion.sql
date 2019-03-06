@@ -1,0 +1,19 @@
+use tempdb
+go
+
+select * from Employe order by Salary desc;
+
+SELECT TOP 1 Salary
+FROM (
+      SELECT DISTINCT TOP 4 Salary
+      FROM Employe
+      ORDER BY Salary DESC
+      ) AS Emp
+ORDER BY Salary
+
+-- DUPLICATE ROWS;
+SELECT P_ID,P_PRICE FROM PRODUCT_DETAILS
+	GROUP BY P_ID,P_PRICE HAVING COUNT(*) > 1;
+
+--listagg/STRING_AGG FUNCTION
+SELECT STRING_AGG(NAME, ' , ') WITHIN GROUP (ORDER BY NAME) AS SUBJECTS FROM EMPLOYE ;
